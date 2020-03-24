@@ -1,15 +1,10 @@
-package com.yang.model;
+package com.yang.dto;
 
-import lombok.AllArgsConstructor;
+import com.yang.model.User;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-
-public class Question {
+public class QuestionDto {
     private String title;
     private String description;
     private long gmtCreate;
@@ -19,4 +14,5 @@ public class Question {
     private int likeCount;
     private int creator;
     private String tag;
+    private User user;
 }
