@@ -2,21 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>码匠社区</title>
+    <title th:text="${sectionName}"></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/community.css" type="text/css">
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-</head>
+    <link rel="stylesheet" href="../css/community.css"type="text/css"></head>
 <body>
     <!--代码片段，指向navigation.html中的代码-->
     <div th:insert="~{navigation :: copy}"></div>
 
-<div class="container-fluid main" >
+<div class="container-fluid main profile" >
     <div class="row">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span>发现</h2>
+            <h2><span th:text="${sectionName}"></span></h2>
             <hr>
             <div class="media" th:each="question : ${pageDto.questions}">
                 <div class="media-left">
@@ -49,8 +49,14 @@
         </div>
 
         <div class="col-lg-3 col-md-9 col-sm-12 col-xs-12">
-            <h3>热门话题</h3>
+            <div class="list-group section">
+                <a href="/profile/questions" th:class="${section == 'questions'}?'list-group-item active':'list-group-item'">我的问题</a>
+                <a href="/profile/replies" th:class="${section == 'replies'}?'list-group-item active':'list-group-item'">
+                    最新回复
+                    <span class="badge">14</span>
+                </a>
 
+            </div>
         </div>
     </div>
 </div>
